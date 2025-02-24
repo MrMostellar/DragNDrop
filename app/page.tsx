@@ -1,10 +1,11 @@
-import Carousel from "./components/Carousel";
+import Carousel from "./components/Carousel/Carousel";
+import { carouselData } from "./components/Carousel/Data/carouselData";
 
 export default function Home() {
   return (
     <div className="">
-      <main className=" bg-[#333333] flex min-h-[100vh] min-w-[100vw] items-center justify-center">
-        <Carousel />
+      <main className="min-w-screen flex min-h-screen items-center justify-center bg-[#333333]">
+        <Carousel data={carouselData} />
       </main>
     </div>
   );
