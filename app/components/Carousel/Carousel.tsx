@@ -12,14 +12,24 @@ const iconStyles = "hover:size-[1.5rem]";
 export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const handleClickPrevious = () => {};
+  const handleClickPrevious = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+  ) => {
+    currentIndex === 0
+      ? setCurrentIndex(carouselData.length - 1)
+      : setCurrentIndex(currentIndex - 1);
+  };
 
-  const handleClickNext = () => {};
+  const handleClickNext = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    currentIndex === carouselData.length - 1
+      ? setCurrentIndex(0)
+      : setCurrentIndex(currentIndex + 1);
+  };
 
   return (
     <div className="flex min-h-[50vh] min-w-[75vw] rounded-3xl bg-black p-2">
       <div className="relative flex flex-1 items-center justify-center">
-        <div className="absolute left-4 z-10">
+        <div className="absolute left-4 z-10" onClick={handleClickPrevious}>
           <FaChevronLeft
             color={iconColor}
             size={iconSize}
@@ -29,7 +39,7 @@ export default function Carousel() {
         <div className="flex flex-1">
           <CarouselCards data={carouselData} currentIndex={currentIndex} />
         </div>
-        <div className="absolute right-4 z-10">
+        <div className="absolute right-4 z-10" onClick={handleClickNext}>
           <FaChevronRight
             color={iconColor}
             size={iconSize}
@@ -37,7 +47,10 @@ export default function Carousel() {
           />
         </div>
         <div className="absolute bottom-4 z-10 flex">
-          <CarouselDots />
+          <CarouselDots
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+          />
         </div>
       </div>
     </div>
