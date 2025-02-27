@@ -1,15 +1,20 @@
 "use client";
-import { carouselCards, carouselData } from "./Data/carouselData";
+
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CarouselDots from "./CarouselDots";
 import CarouselCards from "./CarouselCards";
+import { carouselCards } from "./Data/carouselData";
 
 const iconSize = "1.4rem";
 const iconColor = "white";
 const iconStyles = "hover:size-[1.5rem]";
 
-export default function Carousel() {
+export interface CarouselProps {
+  carouselData: carouselCards[];
+}
+
+export default function Carousel({ carouselData }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const handleClickPrevious = (
@@ -27,19 +32,20 @@ export default function Carousel() {
   };
 
   return (
-    <div className="flex min-h-[50vh] min-w-[75vw] rounded-3xl bg-black p-2">
+    <div className="flex min-h-[60vh] min-w-[75vw] rounded-3xl bg-black p-2 lg:min-h-[75vh]">
       <div className="relative flex flex-1 items-center justify-center">
-        <div className="absolute left-4 z-10" onClick={handleClickPrevious}>
+        <div
+          className="absolute left-4 z-10 flex flex-1"
+          onClick={handleClickPrevious}
+        >
           <FaChevronLeft
             color={iconColor}
             size={iconSize}
             className={iconStyles}
           />
         </div>
-        <div className="flex flex-1">
-          <CarouselCards data={carouselData} currentIndex={currentIndex} />
-        </div>
-        <div className="absolute right-4 z-10" onClick={handleClickNext}>
+        <CarouselCards data={carouselData} currentIndex={currentIndex} />
+        <div className="relative right-4 z-10" onClick={handleClickNext}>
           <FaChevronRight
             color={iconColor}
             size={iconSize}

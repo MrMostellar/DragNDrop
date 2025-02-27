@@ -1,11 +1,15 @@
-import { GoDotFill } from "react-icons/go";
+import { GoDot, GoDotFill } from "react-icons/go";
 import { carouselData } from "./Data/carouselData";
 
 interface CarouselDotsProps {
+  currentIndex: number;
   setCurrentIndex: (index: number) => void;
 }
 
-export default function CarouselDots({ setCurrentIndex }: CarouselDotsProps) {
+export default function CarouselDots({
+  setCurrentIndex,
+  currentIndex,
+}: CarouselDotsProps) {
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     const id = e.currentTarget.getAttribute("data-id");
     if (id !== null) {
@@ -21,11 +25,15 @@ export default function CarouselDots({ setCurrentIndex }: CarouselDotsProps) {
         className="p-1"
         onClick={handleClick}
       >
-        <GoDotFill
-          size="1.1rem"
-          color="white"
-          className="hover:-translate-y-1"
-        />
+        {currentIndex === element.id ? (
+          <GoDotFill
+            size="1.1rem"
+            color="white"
+            className="hover:-translate-y-1"
+          />
+        ) : (
+          <GoDot size="1.1rem" color="white" className="hover:-translate-y-1" />
+        )}
       </div>
     );
   });

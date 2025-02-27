@@ -1,19 +1,28 @@
 import Image from "next/image";
 import React from "react";
-import { CarouselProps } from "./Carousel";
+import Loading from "../Loading";
 
-const styles = "static flex flex-1 bg-gray-500 m-1";
-const imgStyles = "object-cover rounded-3xl";
+interface CarouselCardProps {
+  data: { imgURL: string; imgAlt: string }[];
+  currentIndex: number;
+}
 
-export default function CarouselCards({ data, currentIndex }: CarouselProps) {
+export default function CarouselCards({
+  data,
+  currentIndex,
+}: CarouselCardProps) {
   return (
-    <div className={styles}>
-      <Image
-        src={data[currentIndex].imgURL}
-        alt={data[currentIndex].imgAlt}
-        fill
-        className={imgStyles}
-      />
+    <div className="m-1 flex flex-1 bg-gray-500">
+      {data ? (
+        <Image
+          src={data[currentIndex].imgURL}
+          alt={data[currentIndex].imgAlt}
+          fill
+          className="rounded-3xl object-cover"
+        />
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
