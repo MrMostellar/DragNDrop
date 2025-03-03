@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "DragnDrop",
-  description: "Slay the beast of creating a website",
+  description: "Slay the beast and create a website",
 };
 
 export default function RootLayout({
@@ -13,10 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">
-        <header></header>
+      <body className="overflow-y-scroll">
+        <header className="min-h-[20vh]">
+          <Header />
+        </header>
         {children}
-        <footer></footer>
+        <footer className="min-h-[30vh]">
+          <Footer />
+        </footer>
       </body>
     </html>
   );

@@ -11,3 +11,15 @@
 .loading-animation{
     animation:loader alternate ease-in-out infinite 3s ;
 }
+
+@keyframes fade{
+    0%{opacity: 0;}
+    15%{opacity: 1;}
+    85%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+.fade{
+    animation: fade 5.5s;
+}
+

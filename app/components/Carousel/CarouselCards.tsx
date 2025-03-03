@@ -12,7 +12,10 @@ export default function CarouselCards({
   currentIndex,
 }: CarouselCardProps) {
   return (
-    <div className="m-1 flex flex-1 bg-gray-500">
+    <div
+      key={data[currentIndex].imgURL}
+      className="fade m-1 flex flex-1 bg-gray-500"
+    >
       {data ? (
         <Image
           src={data[currentIndex].imgURL}

@@ -4,11 +4,15 @@ import { carouselData } from "./Data/carouselData";
 interface CarouselDotsProps {
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
+  color: string;
+  size: string | number;
 }
 
 export default function CarouselDots({
   setCurrentIndex,
   currentIndex,
+  color,
+  size,
 }: CarouselDotsProps) {
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     const id = e.currentTarget.getAttribute("data-id");
@@ -27,12 +31,12 @@ export default function CarouselDots({
       >
         {currentIndex === element.id ? (
           <GoDotFill
-            size="1.1rem"
-            color="white"
+            size={size}
+            color={color}
             className="hover:-translate-y-1"
           />
         ) : (
-          <GoDot size="1.1rem" color="white" className="hover:-translate-y-1" />
+          <GoDot size={size} color={color} className="hover:-translate-y-1" />
         )}
       </div>
     );
