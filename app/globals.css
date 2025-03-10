@@ -2,24 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@keyframes loader{
-    100%{transform: scaleX(1.1) scaleY(1.1)}
-        from{opacity: 0.3;}
-        to{opacity: 1;}
-}
-.loading-animation{
-    animation:loader alternate ease-in-out infinite 3s ;
+:root {
+  --primary: #343c44;
+  --secondary: #1e2127;
+  --tertiary: #fb5027;
+  --complimentary: #fca31b;
+  --contrast: #e7f2f8;
 }
 
-@keyframes fade{
-    0%{opacity: 0;}
-    15%{opacity: 1;}
-    85%{opacity: 1;}
-    100%{opacity: 0;}
+.main-font {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.fade{
-    animation: fade 5.5s;
+@keyframes loader {
+  100% {
+    transform: scaleX(1.1) scaleY(1.1);
+  }
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.loading-animation {
+  animation: loader alternate ease-in-out infinite 3s;
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade {
+  animation: fade 5.5s;
+}
+
+.drop-down-container > nav {
+  opacity: 0;
+}
+
+.drop-down-links {
+  pointer-events: none;
+}
+
+.drop-down-container:active,
+.drop-down-container:focus-within > nav {
+  opacity: 1;
+  transition:
+    opacity 250ms ease-in-out,
+    translate 250ms ease-in-out;
+  .drop-down-links {
+    pointer-events: all;
+  }
+}
+
+.drop-down-container:not(:focus-within) > nav {
+  opacity: 0;
+  translate: 20vw;
+  transition:
+    opacity 250ms ease-in-out,
+    translate 250ms ease-in-out;
+}
+
+.user-nav-text:hover {
+  color: var(--complimentary);
+}

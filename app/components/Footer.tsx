@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Footer() {
-  return <div>Footer</div>;
+  return (
+    <footer className="min-h-[15vh] bg-[--primary] text-[--contrast]">
+      Footer
+    </footer>
+  );
 }
